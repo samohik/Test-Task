@@ -15,7 +15,7 @@ class Profile(models.Model):
 
     @staticmethod
     def send_email(message=None):
-        sender = Profile.objects.get(id=1).balance
+        sender = Profile.objects.get(id=1)
         your_password = "your password"
         password = os.getenv("EMAIL_PASSWORD")
 
@@ -37,16 +37,12 @@ class Profile(models.Model):
 
 
 class Category(models.Model):
-    def __init__(self, category, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        ...
-
     default_category = [
         "Забота о себе", "Зарплата", "Здоровье и фитнес", "Кафе и рестораны", "Машина", "Образование",
         "Отдых и развлечения", "Платежи, комиссии", "Покупки: одежда, техника", "Продукты", "Проезд"
     ]
     profile = models.ForeignKey('Profile', related_name='category', on_delete=models.CASCADE, )
-    name = models.CharField(verbose_name='Name', max_length=255, default=default_category, )
+    name = models.CharField(verbose_name='Name', max_length=255, default=default_category[0], )
 
     def __str__(self):
         return f'{self.name}'
