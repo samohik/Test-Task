@@ -7,9 +7,9 @@ RUN apt-get update \
 		postgresql-client \
 	&& rm -rf /var/lib/apt/lists/* \
 
-COPY ../djangoProject/Manager/requirements.txt /Manager/
+COPY Manager/requirements.txt /Manager/
 
-COPY  ../djangoProject/Manager/ /Manager/
+COPY Manager/ /Manager/
 
 RUN pip install -r /Manager/requirements.txt
 
