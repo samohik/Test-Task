@@ -7,8 +7,6 @@ RUN apt-get update \
 		postgresql-client \
 	&& rm -rf /var/lib/apt/lists/* \
 
-COPY Manager/requirements.txt /Manager/
-
 COPY Manager/ /Manager/
 
 RUN pip install -r /Manager/requirements.txt
